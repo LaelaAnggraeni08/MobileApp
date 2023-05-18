@@ -10,4 +10,12 @@ Silahkan masukkan nilai dari setiap sisinya!!!</string>
     <string name="nilai1_invalid">Sisi 1 tidak boleh kosong.</string>
     <string name="nilai2_invalid">Sisi 2 tidak boleh kosong.</string>
     <string name="nilai3_invalid">Sisi 3 tidak boleh kosong.</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="copyright">Hitung ruang merupakan aplikasi yang dapat digunakan untuk menghitung volume bangun ruang, untuk saat ini aplikasi hitung ruang baru ada 2 bangun ruang dan akan menambah bangun ruang untuk selanjutnya.\n\nAplikasi ini dibuat untuk kelas
+Mobpro 1. Temukan kodenya di https://github.com/LaelaAnggraeni08/MobileApp\n\nCopyright © 2023 Laela Anggraeni.\nAll rights reserved.</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="bagikan_template">Sisi 1: %1$s cm\nSisi 2: %2$s
+cm\nSisi 3: %3$s cm\n\n%4$s</string>
+
+
 </resources>

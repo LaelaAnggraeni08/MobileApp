@@ -3,57 +3,28 @@ package org.d3if3111.assessmentmobpro
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import org.d3if3111.assessmentmobpro.databinding.ActivityMainBinding
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import org.d3if3111.assessmentmobpro.model.HasilVolume
-import org.d3if3111.assessmentmobpro.model.MainViewModel
+import org.d3if3111.assessmentmobpro.ui.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
-    }
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.button.setOnClickListener { hitungVolume() }
-        viewModel.getHasilVolume().observe(this, { showResult(it) })
-
+        navController = findNavController(R.id.myNavHostFragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
-    private fun hitungVolume() {
-
-        val nilaiSatu = binding.nilai1Inp.text.toString()
-        if (TextUtils.isEmpty(nilaiSatu)) {
-            Toast.makeText(this, R.string.nilai1_invalid, Toast.LENGTH_LONG).show()
-            return
-        }
-        val nilaiDua = binding.nilai2Inp.text.toString()
-        if (TextUtils.isEmpty(nilaiDua)) {
-            Toast.makeText(this, R.string.nilai2_invalid, Toast.LENGTH_LONG).show()
-            return
-        }
-        val nilaiTiga = binding.nilai3Inp.text.toString()
-        if (TextUtils.isEmpty(nilaiTiga)) {
-            Toast.makeText(this, R.string.nilai3_invalid, Toast.LENGTH_LONG).show()
-            return
-        }
-        viewModel.hitungVolume(
-            nilaiSatu.toFloat(),
-            nilaiDua.toFloat(),
-            nilaiTiga.toFloat()
-        )
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
     }
 
-    private fun showResult(result: HasilVolume?) {
-        if (result == null) return
-        binding.hasilTextView.text = getString(R.string.hasil, result.volume)
-    }
 }

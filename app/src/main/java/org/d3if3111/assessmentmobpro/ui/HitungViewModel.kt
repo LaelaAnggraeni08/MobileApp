@@ -1,8 +1,9 @@
-package org.d3if3111.assessmentmobpro.model
+package org.d3if3111.assessmentmobpro.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import org.d3if3111.assessmentmobpro.model.HasilVolume
 
 class MainViewModel : ViewModel() {
 
