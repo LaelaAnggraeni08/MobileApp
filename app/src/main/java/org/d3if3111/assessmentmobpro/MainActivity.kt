@@ -1,5 +1,6 @@
 package org.d3if3111.assessmentmobpro
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -26,5 +27,4 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
-
 }

@@ -1,25 +1,25 @@
 <resources>
     <string name="app_name">Hitung Ruang</string>
     <string name="intro">Hitung Volume Kubus.
-Silahkan masukkan nilai dari setiap sisinya!!!</string>
-    <string name="nilai1">Sisi 1</string>
-    <string name="nilai2">Sisi 2</string>
-    <string name="nilai3">Sisi 3</string>
+Silahkan masukkan nilai dari setiap sisinya!!!\nJika nilai sisinya desimal, gunakan titik bukan koma.</string>
+    <string name="nilai1">Sisi (cm)</string>
+    <string name="nilai2">Sisi (cm)</string>
+    <string name="nilai3">Sisi (cm)</string>
     <string name="hitung">Hitung</string>
     <string name="hasil">Volume : %1$.2f</string>
     <string name="nilai1_invalid">Sisi 1 tidak boleh kosong.</string>
     <string name="nilai2_invalid">Sisi 2 tidak boleh kosong.</string>
     <string name="nilai3_invalid">Sisi 3 tidak boleh kosong.</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
-    <string name="copyright">Hitung ruang merupakan aplikasi yang dapat digunakan untuk menghitung volume bangun ruang, untuk saat ini aplikasi hitung ruang baru ada 2 bangun ruang dan akan menambah bangun ruang untuk selanjutnya.\n\nAplikasi ini dibuat untuk kelas
+    <string name="copyright">Hitung ruang merupakan aplikasi yang dapat digunakan untuk menghitung volume bangun ruang, untuk saat ini aplikasi hitung ruang hanya dapat digunakan untuk menghitung volume kubus dan akan menambah bangun ruang  lain untuk selanjutnya.\n\nAplikasi ini dibuat untuk kelas
 Mobpro 1. Temukan kodenya di https://github.com/LaelaAnggraeni08/MobileApp\n\nCopyright © 2023 Laela Anggraeni.\nAll rights reserved.</string>
     <string name="bagikan">Bagikan</string>
     <string name="bagikan_template">Sisi 1: %1$s cm\nSisi 2: %2$s
-cm\nSisi 3: %3$s cm\n\n%4$s</string>
+cm\nSisi 3: %3$s cm\n\n%4$s cm3</string>
     <string name="belum_ada_data">Belum ada data</string>
     <string name="histori">Histori</string>
-    <string name="hasil_x">Volume: %1$.2f </string>
-    <string name="data_x">Sisi 1: %1$.1f - Sisi 2: %2$.1f - Sisi 3: %3$.1f</string>
+    <string name="hasil_x">Volume: %1$.2f cm3</string>
+    <string name="data_x">Sisi 1: %1$.1f cm ; Sisi 2: %2$.1f cm ; Sisi 3: %3$.1f cm</string>
     <string name="hapus_histori">Hapus Histori</string>
     <string name="konfirmasi_hapus">Hapus semua histori?</string>
     <string name="hapus">Hapus</string>

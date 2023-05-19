@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/hitungFragment">
-
     <fragment
         android:id="@+id/hitungFragment"
         android:name="org.d3if3111.assessmentmobpro.ui.hitung.HitungFragment"
