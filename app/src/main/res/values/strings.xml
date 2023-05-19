@@ -6,7 +6,7 @@ Silahkan masukkan nilai dari setiap sisinya!!!\nJika nilai sisinya desimal, guna
     <string name="nilai2">Sisi (cm)</string>
     <string name="nilai3">Sisi (cm)</string>
     <string name="hitung">Hitung</string>
-    <string name="hasil">Volume : %1$.2f</string>
+    <string name="hasil">Volume : %1$.2f cm3</string>
     <string name="nilai1_invalid">Sisi 1 tidak boleh kosong.</string>
     <string name="nilai2_invalid">Sisi 2 tidak boleh kosong.</string>
     <string name="nilai3_invalid">Sisi 3 tidak boleh kosong.</string>
