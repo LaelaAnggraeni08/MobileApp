@@ -9,7 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import org.d3if3111.assessmentmobpro.model.HasilVolume
-import org.d3if3111.assessmentmobpro.ui.MainViewModel
+
 
 class MainActivity : AppCompatActivity() {
 

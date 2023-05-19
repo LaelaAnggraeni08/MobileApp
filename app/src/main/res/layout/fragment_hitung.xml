@@ -78,11 +78,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="124dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="124dp"
             android:fontFamily="@font/adamina"
             android:text="@string/hitung"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.169"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nilai3_hint" />
 
