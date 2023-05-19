@@ -7,15 +7,22 @@
 
     <fragment
         android:id="@+id/hitungFragment"
-        android:name="org.d3if3111.assessmentmobpro.ui.HitungFragment"
+        android:name="org.d3if3111.assessmentmobpro.ui.hitung.HitungFragment"
         android:label="Hitung Ruang"
         tools:layout="@layout/fragment_hitung" >
         <action
             android:id="@+id/action_hitungFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_hitungFragment_to_historiFragment"
+            app:destination="@id/historiFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="org.d3if3111.assessmentmobpro.ui.AboutFragment"
         android:label="Tentang Aplikasi" />
+    <fragment
+        android:id="@+id/historiFragment"
+        android:name="org.d3if3111.assessmentmobpro.ui.histori.HistoriFragment"
+        android:label="Histori" />
 </navigation>

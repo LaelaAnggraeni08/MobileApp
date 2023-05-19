@@ -16,6 +16,13 @@ Mobpro 1. Temukan kodenya di https://github.com/LaelaAnggraeni08/MobileApp\n\nCo
     <string name="bagikan">Bagikan</string>
     <string name="bagikan_template">Sisi 1: %1$s cm\nSisi 2: %2$s
 cm\nSisi 3: %3$s cm\n\n%4$s</string>
-
+    <string name="belum_ada_data">Belum ada data</string>
+    <string name="histori">Histori</string>
+    <string name="hasil_x">Volume: %1$.2f </string>
+    <string name="data_x">Sisi 1: %1$.1f - Sisi 2: %2$.1f - Sisi 3: %3$.1f</string>
+    <string name="hapus_histori">Hapus Histori</string>
+    <string name="konfirmasi_hapus">Hapus semua histori?</string>
+    <string name="hapus">Hapus</string>
+    <string name="batal">Batal</string>
 
 </resources>

@@ -1,8 +1,9 @@
-package org.d3if3111.assessmentmobpro.ui
+package org.d3if3111.assessmentmobpro.ui.hitung
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -15,14 +16,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import org.d3if3111.assessmentmobpro.R
 import org.d3if3111.assessmentmobpro.databinding.FragmentHitungBinding
+import org.d3if3111.assessmentmobpro.db.VolumeDb
 import org.d3if3111.assessmentmobpro.model.HasilVolume
 
 class HitungFragment : Fragment() {
 
     private lateinit var binding: FragmentHitungBinding
 
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(requireActivity())[MainViewModel::class.java]
+    private val viewModel: HitungViewModel by lazy {
+        val db = VolumeDb.getInstance(requireContext())
+        val factory = HitungViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[HitungViewModel::class.java]
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +43,47 @@ class HitungFragment : Fragment() {
         binding.shareButton.setOnClickListener { shareData() }
         viewModel.getHasilVolume().observe(requireActivity(), { showResult(it) })
 
+    }
+
+    private fun shareData() {
+        val message = getString(R.string.bagikan_template,
+            binding.nilai1Inp.text,
+            binding.nilai2Inp.text,
+            binding.nilai3Inp.text,
+            binding.hasilTextView.text
+        )
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
+        if (shareIntent.resolveActivity(
+                requireActivity().packageManager
+            ) != null
+        ) {
+            startActivity(shareIntent)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_histori -> {
+                findNavController().navigate(
+                    R.id.action_hitungFragment_to_historiFragment
+                )
+                return true
+            }
+
+            R.id.menu_about -> {
+                findNavController().navigate(
+                    R.id.action_hitungFragment_to_aboutFragment
+                )
+                return true
+            }
+        }
+            return super.onOptionsItemSelected(item)
     }
 
     private fun hitungVolume() {
@@ -65,40 +110,9 @@ class HitungFragment : Fragment() {
         )
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.options_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_about) {
-            findNavController().navigate(
-                R.id.action_hitungFragment_to_aboutFragment)
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun shareData() {
-        val message = getString(R.string.bagikan_template,
-            binding.nilai1Inp.text,
-            binding.nilai2Inp.text,
-            binding.nilai3Inp.text,
-            binding.hasilTextView.text
-        )
-        val shareIntent = Intent(Intent.ACTION_SEND)
-        shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
-        if (shareIntent.resolveActivity(
-                requireActivity().packageManager
-            ) != null
-        ) {
-            startActivity(shareIntent)
-        }
-    }
-
-
     private fun showResult(result: HasilVolume?) {
         if (result == null) return
+
         binding.hasilTextView.text = getString(R.string.hasil, result.volume)
         binding.shareButton.visibility = View.VISIBLE
 
