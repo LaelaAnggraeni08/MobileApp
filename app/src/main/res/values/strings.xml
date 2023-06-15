@@ -25,4 +25,9 @@ cm\nSisi 3: %3$s cm\n\n%4$s cm3</string>
     <string name="hapus">Hapus</string>
     <string name="batal">Batal</string>
 
+    <string name="message">%1$s diklik!</string>
+    <string name="switch_layout">Ubah tampilan</string>
+    <string name="gambar">Jenis Bangun Ruang</string>
+
+
 </resources>

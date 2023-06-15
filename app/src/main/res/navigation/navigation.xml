@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_hitungFragment_to_historiFragment"
             app:destination="@id/historiFragment" />
+        <action
+            android:id="@+id/action_hitungFragment_to_imageFragment"
+            app:destination="@id/imageFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -24,4 +27,8 @@
         android:id="@+id/historiFragment"
         android:name="org.d3if3111.assessmentmobpro.ui.histori.HistoriFragment"
         android:label="Histori" />
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="org.d3if3111.assessmentmobpro.ui.image.ui.main.ImageFragment"
+        android:label="Jenis Bangun Ruang" />
 </navigation>

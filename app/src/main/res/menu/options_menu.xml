@@ -7,6 +7,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/menu_main"
+        android:icon="@drawable/ic_baseline_image_24"
+        android:title="@string/gambar"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/menu_histori"
         android:icon="@drawable/ic_baseline_history_24"
         android:title="@string/histori"
