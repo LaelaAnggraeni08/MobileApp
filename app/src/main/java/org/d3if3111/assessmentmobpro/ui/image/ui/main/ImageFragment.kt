@@ -22,6 +22,7 @@ import org.d3if3111.assessmentmobpro.databinding.FragmentImageBinding
 import org.d3if3111.assessmentmobpro.ui.image.data.SettingDataStore
 import org.d3if3111.assessmentmobpro.ui.image.data.dataStore
 import org.d3if3111.assessmentmobpro.ui.image.model.Image
+import org.d3if3111.assessmentmobpro.ui.image.network.ImageApi
 import org.d3if3111.assessmentmobpro.ui.image.ui.main.ImageAdapter
 
 class ImageFragment : Fragment()  {
@@ -67,6 +68,25 @@ class ImageFragment : Fragment()  {
         viewModel.getData().observe(viewLifecycleOwner, {
             myAdapter.updateData(it)
         })
+
+        viewModel.getStatus().observe(viewLifecycleOwner) {
+            updateProgress(it)
+        }
+    }
+
+    private fun updateProgress(status: ImageApi.ApiStatus) {
+        when (status) {
+            ImageApi.ApiStatus.LOADING -> {
+                binding.progressBar.visibility = View.VISIBLE
+            }
+            ImageApi.ApiStatus.SUCCESS -> {
+                binding.progressBar.visibility = View.GONE
+            }
+            ImageApi.ApiStatus.FAILED -> {
+                binding.progressBar.visibility = View.GONE
+                binding.networkError.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun setLayout() {

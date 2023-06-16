@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.d3if3111.assessmentmobpro.R
 import org.d3if3111.assessmentmobpro.databinding.ListImageBinding
 import org.d3if3111.assessmentmobpro.ui.image.model.Image
+import org.d3if3111.assessmentmobpro.ui.image.network.ImageApi
 
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
@@ -25,7 +27,10 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
         fun bind(image: Image) = with(binding) {
             namabangunTextView.text = image.nama
             rumusTextView.text = image.rumus
-            imageView.setImageResource(image.imageResId)
+            Glide.with(imageView.context)
+                .load(ImageApi.getImageUrl(image.imageResId))
+                .error(R.drawable.baseline_broken_image_24)
+                .into(imageView)
 
             root.setOnClickListener {
                 val message = root.context.getString(R.string.message, image.nama)

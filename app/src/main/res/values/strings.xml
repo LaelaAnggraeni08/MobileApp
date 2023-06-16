@@ -28,6 +28,7 @@ cm\nSisi 3: %3$s cm\n\n%4$s cm3</string>
     <string name="message">%1$s diklik!</string>
     <string name="switch_layout">Ubah tampilan</string>
     <string name="gambar">Jenis Bangun Ruang</string>
+    <string name="koneksi_error">Koneksi error</string>
 
 
 </resources>

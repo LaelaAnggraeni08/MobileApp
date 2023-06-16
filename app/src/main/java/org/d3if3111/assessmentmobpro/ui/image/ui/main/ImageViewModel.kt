@@ -1,32 +1,40 @@
 package org.d3if3111.assessmentmobpro.ui.image.ui.main
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.d3if3111.assessmentmobpro.R
 import org.d3if3111.assessmentmobpro.ui.image.model.Image
+import org.d3if3111.assessmentmobpro.ui.image.network.ImageApi
 
 class ImageViewModel  : ViewModel() {
 
     private val data = MutableLiveData<List<Image>>()
+    private val status = MutableLiveData<ImageApi.ApiStatus>()
 
     init {
-        data.value = initData()
+        retrieveData()
     }
 
-    // Data ini akan kita ambil dari server di langkah selanjutnya
-    private fun initData(): List<Image> {
-        return listOf(
-            Image("Kubus", "V = s x s x s", R.drawable.kubus),
-            Image("Balok", "V = p x l x t", R.drawable.balok),
-            Image("Tabung", "V = π x r² x t", R.drawable.tabung),
-            Image("Kerucut", "V = 1/3 x π x r² x t", R.drawable.kerucut),
-            Image("Bola", "V = 4/3 x π x r³", R.drawable.bola),
-            Image("Limas Segitiga", "V = 1/3 x luas alas x t", R.drawable.limassegitiga),
-            Image("Limas Segiempat", "V = 1/3 x luas alas x t", R.drawable.limassegiempat),
-            Image("Prisma Segitiga", "V = (1/2 x a x t) x tinggi prisma", R.drawable.prismasegitiga),
-        )
+    private fun retrieveData() {
+        viewModelScope.launch (Dispatchers.IO) {
+            status.postValue(ImageApi.ApiStatus.LOADING)
+            try {
+                data.postValue(ImageApi.service.getImage())
+                status.postValue(ImageApi.ApiStatus.SUCCESS)
+            } catch (e: Exception) {
+                Log.d("ImageViewModel", "Failure: ${e.message}")
+                status.postValue(ImageApi.ApiStatus.FAILED)
+            }
+        }
     }
 
     fun getData(): LiveData<List<Image>> = data
+
+    fun getStatus(): LiveData<ImageApi.ApiStatus> = status
+
 }
