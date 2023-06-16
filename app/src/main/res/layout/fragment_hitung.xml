@@ -38,6 +38,7 @@
             android:id="@+id/nilai1_inp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="@string/nilai1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,6 +55,7 @@
             android:id="@+id/nilai2_inp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="@string/nilai2" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,6 +72,7 @@
             android:id="@+id/nilai3_inp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="@string/nilai3" />
         </com.google.android.material.textfield.TextInputLayout>
 
