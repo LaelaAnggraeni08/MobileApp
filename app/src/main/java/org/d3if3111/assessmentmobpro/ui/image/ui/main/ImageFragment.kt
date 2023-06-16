@@ -1,5 +1,8 @@
 package org.d3if3111.assessmentmobpro.ui.image.ui.main
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -7,6 +10,8 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import org.d3if3111.assessmentmobpro.R
 import org.d3if3111.assessmentmobpro.databinding.FragmentImageBinding
+import org.d3if3111.assessmentmobpro.ui.image.ImageActivity
 import org.d3if3111.assessmentmobpro.ui.image.data.SettingDataStore
 import org.d3if3111.assessmentmobpro.ui.image.data.dataStore
 import org.d3if3111.assessmentmobpro.ui.image.model.Image
@@ -72,6 +78,8 @@ class ImageFragment : Fragment()  {
         viewModel.getStatus().observe(viewLifecycleOwner) {
             updateProgress(it)
         }
+
+        viewModel.scheduleUpdater(requireActivity().application)
     }
 
     private fun updateProgress(status: ImageApi.ApiStatus) {
@@ -81,6 +89,10 @@ class ImageFragment : Fragment()  {
             }
             ImageApi.ApiStatus.SUCCESS -> {
                 binding.progressBar.visibility = View.GONE
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    requestNotificationPermission()
+                }
             }
             ImageApi.ApiStatus.FAILED -> {
                 binding.progressBar.visibility = View.GONE
@@ -118,5 +130,20 @@ class ImageFragment : Fragment()  {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun requestNotificationPermission() {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                ImageActivity.PERMISSION_REQUEST_CODE
+            )
+        }
     }
 }
