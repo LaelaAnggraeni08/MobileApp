@@ -15,7 +15,7 @@ Silahkan masukkan nilai dari setiap sisinya!!!\nJika nilai sisinya desimal, guna
 Mobpro 1. Temukan kodenya di https://github.com/LaelaAnggraeni08/MobileApp\n\nCopyright © 2023 Laela Anggraeni.\nAll rights reserved.</string>
     <string name="bagikan">Bagikan</string>
     <string name="bagikan_template">Sisi 1: %1$s cm\nSisi 2: %2$s
-cm\nSisi 3: %3$s cm\n\n%4$s cm3</string>
+cm\nSisi 3: %3$s cm\n\n%4$s </string>
     <string name="belum_ada_data">Belum ada data</string>
     <string name="histori">Histori</string>
     <string name="hasil_x">Volume: %1$.2f cm3</string>
